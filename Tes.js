@@ -114,16 +114,16 @@ if (reversed == null) { reversed = false; }
 		Makes the specified symbol instance moveable with drag and drop.
 		*/
 		
-		Kotak.addEventListener(MouseEvent.MOUSE_DOWN, fl_ClickToDrag);
+		Kotak.addEventListener(MouseEvent.MOUSE_DOWN, fl_ClickToDrag_2);
 		
-		function fl_ClickToDrag(event:MouseEvent):void
+		function fl_ClickToDrag_2(event:MouseEvent):void
 		{
 			Kotak.startDrag();
 		}
 		
-		stage.addEventListener(MouseEvent.MOUSE_UP, fl_ReleaseToDrop);
+		stage.addEventListener(MouseEvent.MOUSE_UP, fl_ReleaseToDrop_2);
 		
-		function fl_ReleaseToDrop(event:MouseEvent):void
+		function fl_ReleaseToDrop_2(event:MouseEvent):void
 		{
 			Kotak.stopDrag();
 		}
