@@ -72,8 +72,7 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.Roket, new cjs.Rectangle(-23.1,-58.2,46.2,116.5), null);
 
 
-// stage content:
-(lib.Untitled1 = function(mode,startPosition,loop,reversed) {
+(lib.DragDrop = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -85,15 +84,69 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Layer_1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#006600").s().p("At0GLIAAsVIbpAAIAAMVg");
+	this.shape.setTransform(0.025,0);
+
+	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.DragDrop, new cjs.Rectangle(-88.4,-39.5,176.9,79), null);
+
+
+// stage content:
+(lib.Rokettes = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	this.actionFrames = [449];
+	// timeline functions:
+	this.frame_449 = function() {
+		/* Drag and Drop
+		Makes the specified symbol instance moveable with drag and drop.
+		*/
+		
+		Kotak.addEventListener(MouseEvent.MOUSE_DOWN, fl_ClickToDrag);
+		
+		function fl_ClickToDrag(event:MouseEvent):void
+		{
+			Kotak.startDrag();
+		}
+		
+		stage.addEventListener(MouseEvent.MOUSE_UP, fl_ReleaseToDrop);
+		
+		function fl_ReleaseToDrop(event:MouseEvent):void
+		{
+			Kotak.stopDrag();
+		}
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).wait(449).call(this.frame_449).wait(1));
+
+	// Layer_1
 	this.instance = new lib.Roket();
 	this.instance.setTransform(641.25,647.15,1,1,-90);
 
+	this.Kotak = new lib.DragDrop();
+	this.Kotak.name = "Kotak";
+	this.Kotak.setTransform(698.9,399.45);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance},{t:this.Kotak}]},449).wait(1));
 	this.timeline.addTween(cjs.Tween.get(this.instance).to({guide:{path:[641.3,647,585.2,647,575.3,613.2,565.4,579.5,556,562.4,546.7,545.3,530,541.3,513.3,537.2,497,540.6,480.8,544,468.2,551.2,455.7,558.4,439.9,569.6,424.2,580.7,412,598.8,399.9,616.8,372.6,628.5,345.3,640.2,313.4,635.2,292.4,632,275.5,623.8,256.5,614.6,244.7,600,237.9,591.5,232.3,579.6,228.5,571.4,223.6,557.2,217.4,539.5,215.3,534.3,210.3,521.7,204.6,512.8,195.8,499,180.5,486.1,170.5,477.6,150.9,464.5,128.9,449.7,120.7,443.3,104.4,430.7,94.6,418,81.7,401.3,77.1,379.4,72.6,358.5,76.4,336.9,80.2,315.1,91.4,296.9,103.1,277.9,120.9,266.4,132.2,259.1,148.5,253,155.9,250.2,178.1,243.2,196.7,237.3,207.1,232.8,222.6,226,233.4,217.3,250.5,203.5,265.3,176.5,269.6,168.5,277.3,152.6,285.1,136.4,289.2,128.8,303.4,102.6,322.9,87.2,346,68.9,370.2,71.7,392.1,74.2,411.6,94.2,424.5,107.5,441.2,135.1,457.3,161.6,471.6,175.4,491.7,194.7,513.9,195.7,527.7,196.4,543.4,189.5,554.2,184.8,570.4,174.1,612.5,146.2,651.1,114.8,659.8,107.8,664.2,105.2,672,100.5,679.1,99.8,686.4,99.2,695,102.4,700.5,104.6,709.8,109.9,748.1,132.1,766.2,144.6,796.6,165.5,815.9,187.7,822,194.7,833.6,209.2,844.2,221.5,853.6,228.1,877.4,244.6,910.4,240.7,940.8,237,966.9,218.2,978.9,209.6,998.1,191.1,1019,171,1028.8,163.3,1046.7,149.2,1065.1,143.1,1086.6,135.9,1105.3,140.9,1114.3,162.3,1137.3,191,1143.5,198.8,1156.2,214.4,1167.2,228.1,1174,238.6,1192.1,266.2,1195.1,295.4,1198.5,328.7,1179.6,349.3,1172.8,356.9,1160,365,1145.3,373.7,1138.4,378.6,1121.5,390.7,1109.9,409.2,1098.8,427.1,1094.3,448.2,1089.8,469.3,1092.6,490.2,1095.6,511.8,1106.1,529.7,1111.2,538.4,1122.1,552.8,1134.7,569.5,1138.8,575.8,1147.3,588.7,1150.8,599.5,1154.9,612.6,1152.5,625.1,1149.9,639.1,1138.7,651.1,1128.9,661.8,1114.3,669.1,1095.8,678.3,1071.1,682.6,1053.4,685.6,1025.5,686.8,995.1,688.1,975.5,686.3,948.2,683.9,927.5,675,896.4,661.5,881.8,633.6,867.2,605.7,872.1,568,877,530.2,847.5,519,818.1,507.7,791.5,522.8,764.9,537.8,760.3,559,755.7,580.2,737.9,615.3,720,650.4,667.7,647.5], orient:'fixed'}},449).wait(1));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(680.5,391.2,554.5,325.59999999999997);
+p.nominalBounds = new cjs.Rectangle(1223.2,701.8,-435.80000000000007,-31.59999999999991);
 // library properties:
 lib.properties = {
 	id: 'F1E8A3481678A84D8AECA146DAB3FBC2',
